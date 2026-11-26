@@ -6,3 +6,9 @@ node_modules/
 
 voice.zip
 voice-clean.zip
+
+# design reference / render artifacts
+*.pdf
+shot_*.png
+crop_*.png
+shot.png
