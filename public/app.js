@@ -140,6 +140,18 @@ async function preview(v, btn) {
   }
 }
 
+/* Theme toggle — default light, persisted across visits */
+const themeToggle = document.getElementById("themeToggle");
+function applyTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  localStorage.setItem("ml-theme", theme);
+}
+applyTheme(localStorage.getItem("ml-theme") || "light");
+themeToggle.addEventListener("click", () => {
+  const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  applyTheme(next);
+});
+
 /* Search */
 searchInput.addEventListener("input", applyFilter);
 
