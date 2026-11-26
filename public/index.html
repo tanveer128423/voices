@@ -1,18 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Voices — MetalLabs</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Sticky top bar -->
+  <header class="topbar">
+    <nav class="breadcrumb">
+      <span class="bc-muted">Platform</span>
+      <span class="bc-slash">/</span>
+      <span class="bc-current">Voices</span>
+    </nav>
+    <div class="topbar-right">
+      <button class="theme-toggle" id="themeToggle" title="Toggle theme" aria-label="Toggle theme">
+        <span class="tt-icon" id="ttIcon">☾</span>
+      </button>
+      <span class="tb-avatar">K</span>
+    </div>
+  </header>
+
   <main class="page">
-    <!-- Header -->
-    <header class="page-head">
+    <!-- Page header -->
+    <div class="page-head">
       <div class="ph-left">
         <h1 class="page-title">Voices</h1>
         <p class="page-sub">Browse, preview, and copy voice IDs for your agents.</p>
@@ -22,10 +34,10 @@
         <button class="ptab" data-provider="azure">Azure</button>
         <button class="ptab active" data-provider="xai">xAI</button>
       </div>
-    </header>
+    </div>
 
     <!-- Search -->
-    <div class="search">
+    <div class="ml-input search">
       <span class="search-icon">⌕</span>
       <input id="search" type="text" placeholder="Search by name, accent, language, use case…" />
       <span class="voice-count" id="voiceCount"></span>

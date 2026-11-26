@@ -52,7 +52,7 @@ function render(items) {
     const id = v.id || v.name;
 
     const card = document.createElement("div");
-    card.className = "vcard";
+    card.className = "ml-card";
 
     const top = document.createElement("div");
     top.className = "vc-top";
@@ -73,7 +73,7 @@ function render(items) {
     tags.className = "vc-tags";
     for (const t of tagsFor(v)) {
       const el = document.createElement("span");
-      el.className = "vc-tag";
+      el.className = "ml-badge";
       el.textContent = t.toLowerCase();
       tags.appendChild(el);
     }
@@ -86,7 +86,7 @@ function render(items) {
     idEl.textContent = id;
 
     const copy = document.createElement("button");
-    copy.className = "vc-copy";
+    copy.className = "ml-btn-secondary";
     copy.innerHTML = `<span>⧉</span> Copy ID`;
     copy.addEventListener("click", () => copyId(id, copy));
 
@@ -145,6 +145,20 @@ async function preview(v, btn) {
     btn.textContent = prev;
   }
 }
+
+/* Theme toggle (light default, persisted) */
+const themeToggle = document.getElementById("themeToggle");
+const ttIcon = document.getElementById("ttIcon");
+function applyTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  ttIcon.textContent = theme === "dark" ? "☀" : "☾";
+  localStorage.setItem("ml-theme", theme);
+}
+applyTheme(localStorage.getItem("ml-theme") || "light");
+themeToggle.addEventListener("click", () => {
+  const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  applyTheme(next);
+});
 
 /* Search */
 searchInput.addEventListener("input", applyFilter);
