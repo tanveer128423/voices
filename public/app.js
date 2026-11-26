@@ -38,9 +38,13 @@ async function loadVoices(uiProvider) {
   }
 }
 
-// Tags: split "Male · Multilingual" into chips; fall back to "auto".
+// Tags: split "Male · Multilingual" into chips (drop "multilingual"); fall back to "auto".
 function tagsFor(v) {
-  const raw = (v.description || "").split("·").map((s) => s.trim()).filter(Boolean);
+  const raw = (v.description || "")
+    .split("·")
+    .map((s) => s.trim())
+    .filter(Boolean)
+    .filter((t) => t.toLowerCase() !== "multilingual");
   return raw.length ? raw : ["auto"];
 }
 
