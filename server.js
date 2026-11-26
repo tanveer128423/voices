@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 const SAMPLE_TEXT =
-  "Hi there! This is a quick preview of how this voice sounds.";
+  "Hi there, thanks for calling. How can I help you today?";
 
 const providers = { xai, azure };
 
