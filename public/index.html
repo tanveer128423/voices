@@ -1,36 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Voices — MetalLabs</title>
+  <title>MetalLabs — AI Voice Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main class="page">
-    <!-- Page header -->
-    <div class="page-head">
-      <div class="ph-left">
-        <h1 class="page-title">Voices</h1>
-        <p class="page-sub">Browse, preview, and copy voice IDs for your agents.</p>
+  <main class="voices-main">
+    <div class="voices-wrap">
+      <!-- Header -->
+      <div class="voices-head">
+        <div>
+          <h1 class="voices-title">Voices</h1>
+          <p class="voices-sub">Browse, preview, and copy voice IDs for your agents.</p>
+        </div>
+        <div class="ml-segment" id="providerTabs">
+          <button data-provider="elevenlabs" data-active="false">ElevenLabs</button>
+          <button data-provider="cartesia" data-active="false">Cartesia</button>
+          <button data-provider="fishaudio" data-active="false">Fish Audio</button>
+          <button data-provider="google" data-active="false">Google</button>
+          <button data-provider="azure" data-active="false">Azure MAI</button>
+          <button data-provider="xai" data-active="true">xAI</button>
+        </div>
       </div>
 
-      <div class="provider-tabs" id="providerTabs">
-        <button class="ptab" data-provider="azure">Azure</button>
-        <button class="ptab active" data-provider="xai">xAI</button>
+      <!-- Search -->
+      <div class="voices-search">
+        <svg class="vs-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35m1.35-5.4a6.75 6.75 0 1 1-13.5 0 6.75 6.75 0 0 1 13.5 0Z"></path>
+        </svg>
+        <input id="search" class="ml-input vs-input" placeholder="Search by name, accent, language, use case…" />
       </div>
-    </div>
 
-    <!-- Search -->
-    <div class="search">
-      <span class="search-icon">⌕</span>
-      <input id="search" type="text" placeholder="Search by name, accent, language, use case…" />
-      <span class="voice-count" id="voiceCount"></span>
+      <!-- Grid -->
+      <div class="voices-grid" id="voiceGrid"></div>
+      <div class="list-status" id="listStatus"></div>
     </div>
-
-    <!-- Grid -->
-    <div class="voice-grid" id="voiceGrid"></div>
-    <div class="list-status" id="listStatus"></div>
   </main>
 
   <audio id="player"></audio>
